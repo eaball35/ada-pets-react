@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,36 +6,41 @@ import './PetCard.css';
 
 import speciesEmoji from '../speciesEmoji';
 
+class PetCard extends Component {
+  constructor(props) {
+    super();
+  }
 
-const PetCard = (props) => {
-  const { id, name, species, about, location } = props;
-  return (
-    <div className="card pet-card">
+  render() {
+    return (
+      <div className="card pet-card">
 
-      <section className="pet-card--header">
+        <section className="pet-card--header">
 
-        {speciesEmoji(species)} {id} - {name}
-        <button
-          className="btn btn-primary pet-card--select-pet-btn"
-        >
-          Select
-        </button>
-        <button
-          type="button"
-          className="btn btn-danger pet-card--remove-btn"
-          aria-label="Remove"
-        >
-          Remove
-        </button>
-      </section>
-      <section className="pet-card--body">
-        {about.length > 128 ? `${ about.substring(0, 128) }...` : about}
-      </section>
-      <section className="pet-card--footer text-muted">
-        {location}
-      </section>
-    </div>
-  );
+          {speciesEmoji(this.props.species)} {this.props.id} - {this.props.name}
+          <button
+            className="btn btn-primary pet-card--select-pet-btn"
+            onClick={this.props.onSelectPet}
+          >
+            Select
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger pet-card--remove-btn"
+            aria-label="Remove"
+          >
+            Remove
+          </button>
+        </section>
+        <section className="pet-card--body">
+          {this.props.about.length > 128 ? `${ this.props.about.substring(0, 128) }...` : this.props.about}
+        </section>
+        <section className="pet-card--footer text-muted">
+          {this.props.location}
+        </section>
+      </div>
+    );
+  };
 };
 
 PetCard.propTypes = {

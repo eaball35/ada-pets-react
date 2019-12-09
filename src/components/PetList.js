@@ -7,11 +7,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PetList = (props) => {
 
+  const petList = props.pets.map((pet, i) => {
+    return (
+      <PetCard
+        key={i}
+        {...pet}
+        id={i}
+        onSelectPet={() => props.onSelectPet(i)}
+      />
+    );
+  });
 
   return (
     <div className="card-group">
+      {petList}
     </div>
-  )
+  );
 }
 
 PetList.propTypes = {
