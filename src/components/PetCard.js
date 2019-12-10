@@ -28,6 +28,7 @@ class PetCard extends Component {
             type="button"
             className="btn btn-danger pet-card--remove-btn"
             aria-label="Remove"
+            onClick={this.props.onRemovePet}
           >
             Remove
           </button>

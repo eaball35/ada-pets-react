@@ -14,6 +14,7 @@ const PetList = (props) => {
         {...pet}
         id={i}
         onSelectPet={() => props.onSelectPet(i)}
+        onRemovePet={() => props.onRemovePet(i)}
       />
     );
   });
@@ -28,6 +29,7 @@ const PetList = (props) => {
 PetList.propTypes = {
   pets: PropTypes.array.isRequired,
   onSelectPet: PropTypes.func,
+  onRemovePet: PropTypes.func,
 };
 
 export default PetList;

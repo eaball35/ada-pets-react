@@ -17,7 +17,7 @@ class App extends Component {
 
     this.state = {
       petList: pets,
-      currentPet: pets[0],
+      currentPet: undefined,
     };
     console.log(pets);
   }
@@ -25,7 +25,21 @@ class App extends Component {
   onSelectPet = (id) => {
     this.setState ({
       currentPet: pets[id]
-    })
+    });
+  }
+
+  onRemovePet = (id) => {
+    this.state.petList.splice(id, 1);
+    let current = this.state.currentPet;
+    
+    if (this.state.currentPet.id - 1 === id) {
+      current = undefined;
+    }
+    
+    this.setState ({
+      petList: this.state.petList,
+      currentPet: current,
+    });
   }
   
   addPetCallback = (pet) => {
@@ -39,6 +53,11 @@ class App extends Component {
   render () {
     const { currentPet } = this.state;
     const { petList } = this.state;
+    let details 
+
+    if (currentPet) {
+      details = < PetDetails currentPet={currentPet} />;
+    }
 
     return (
       <main className="App">
@@ -48,12 +67,11 @@ class App extends Component {
         <section className="search-bar-wrapper">
           { /* Wave 4:  Place to add the SearchBar component */}
           <SearchBar />
-        </section>
-          
-          { < PetDetails currentPet={currentPet} /> }
+        </section> 
+            {details}
         
         <section className="pet-list-wrapper">
-          { < PetList pets={petList} onSelectPet={this.onSelectPet} /> }
+          { < PetList pets={petList} onSelectPet={this.onSelectPet} onRemovePet={this.onRemovePet}/> }
         </section>
         <section className="new-pet-form-wrapper">
           { <NewPetForm addPetCallback={this.addPetCallback} /> }
