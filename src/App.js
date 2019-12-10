@@ -18,6 +18,7 @@ class App extends Component {
     this.state = {
       petList: pets,
       currentPet: undefined,
+      filteredPets : pets,
     };
     console.log(pets);
   }
@@ -46,9 +47,21 @@ class App extends Component {
     this.state.petList.push(pet)
     this.setState({
       PetList,
-    }
-    )
+    });
   }
+
+  filterPetsCallBack = (search) => {
+    // let searchPets = []
+    // const s = /search/
+    // this.state.petList.forEach( pet => {
+    //   if (pet.name )
+    // });
+
+    // this.setState({
+    //   filteredPets: searchPets
+    // });
+  }
+
 
   render () {
     const { currentPet } = this.state;
@@ -66,7 +79,7 @@ class App extends Component {
         </header>
         <section className="search-bar-wrapper">
           { /* Wave 4:  Place to add the SearchBar component */}
-          <SearchBar />
+          <SearchBar filterPetsCallBack={this.filterPetsCallBack}/>
         </section> 
             {details}
         
