@@ -18,3 +18,10 @@
   margin: 10px;
   height: 200px;
 }
+
+.valid-email {
+  background-color: olive
+}
+.invalid-email {
+  background-color: peachpuff
+}

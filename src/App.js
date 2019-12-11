@@ -33,7 +33,7 @@ class App extends Component {
     this.state.petList.splice(id, 1);
     let current = this.state.currentPet;
     
-    if (this.state.currentPet.id - 1 === id) {
+    if (this.state.currentPet && this.state.currentPet.id - 1 === id) {
       current = undefined;
     }
     

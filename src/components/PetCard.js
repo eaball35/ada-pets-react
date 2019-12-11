@@ -50,6 +50,8 @@ PetCard.propTypes = {
   species: PropTypes.string.isRequired,
   about: PropTypes.string,
   location: PropTypes.string,
+  onRemovePet: PropTypes.func.isRequired,
+  onSelectPet: PropTypes.func.isRequired,
 }
 
 export default PetCard;
